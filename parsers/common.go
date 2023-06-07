@@ -1,4 +1,4 @@
-package Parsers
+package parsers
 
 type Node struct {
 	Name string

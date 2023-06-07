@@ -2,9 +2,8 @@ package main
 
 import (
 	"flag"
-	"fmt"
-	"io/ioutil"
-	"main/Parsers"
+	"main/parsers"
+	"os"
 )
 
 func main() {
@@ -14,17 +13,14 @@ func main() {
 	flag.Parse()
 
 	// Print the value of the flag
-	_html, err := ioutil.ReadFile(*htmlFile)
+	html, err := os.ReadFile(*htmlFile)
 	if err != nil {
 		panic(err)
 	}
 
-	rootNode, err := Parsers.ParseHtml(string(_html))
+	rootNode, err := parsers.ParseHtml(string(html))
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("#%v\n", rootNode.Name)
-	fmt.Print("\n~~~~~ Tree ~~~~~\n")
-
-	// Parsers.PrintTree(rootNode)
+	parsers.PrintTree(rootNode)
 }
