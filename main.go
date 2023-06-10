@@ -2,8 +2,8 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"log"
+	"main/engine"
 	"main/parsers"
 	"os"
 )
@@ -24,8 +24,9 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("~~~~ HTML ~~~~")
-	parsers.PrintTree(rootNode)
+
+	// fmt.Println("~~~~ HTML ~~~~")
+	// parsers.PrintTree(rootNode)
 
 	css, err := os.ReadFile(*cssFile)
 	if err != nil {
@@ -37,7 +38,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("\n~~~~ CSS ~~~~")
-	parsers.PrintStyle(stylesheet)
+	// fmt.Println("\n~~~~ CSS ~~~~")
+	// parsers.PrintStyle(stylesheet)
+
+	renderTree := engine.RenderTree(rootNode, stylesheet)
+	engine.PrintRenderTree(renderTree)
 
 }

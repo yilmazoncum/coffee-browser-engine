@@ -67,7 +67,7 @@ func ParseTag(html string) (*Node, int) {
 	for _, part := range textArr[1:] {
 		attrArr := strings.SplitN(part, "=", 2)
 		if len(attrArr) == 2 {
-			attributes[attrArr[0]] = attrArr[1]
+			attributes[attrArr[0]] = strings.ReplaceAll(attrArr[1], "\"", "")
 		}
 	}
 	node.Attributes = attributes
