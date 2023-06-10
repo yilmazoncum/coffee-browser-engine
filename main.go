@@ -5,6 +5,7 @@ import (
 	"log"
 	"main/engine"
 	"main/parsers"
+	"main/rasterizer"
 	"os"
 )
 
@@ -45,6 +46,10 @@ func main() {
 	//engine.PrintRenderTree(renderTree)
 
 	layoutTree := engine.LayoutTree(renderTree)
-	engine.PrintLayoutTree(layoutTree)
+	//engine.PrintLayoutTree(layoutTree)
+
+	img := rasterizer.CreateCanvas()
+	img = rasterizer.Paint(img, layoutTree)
+	rasterizer.CreateImage(img)
 
 }

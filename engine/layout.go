@@ -14,15 +14,15 @@ func buildLayoutTree(rn *RenderNode, x int, y int) *LayoutNode {
 	layoutNode := &LayoutNode{
 		RenderNode: rn,
 		Box: &Box{
-			x: x,
-			y: y,
+			X: x,
+			Y: y,
 		},
 	}
 
-	layoutNode.Box = BuildBox(rn.Style, layoutNode.Box.x, layoutNode.Box.y)
+	layoutNode.Box = BuildBox(rn.Style, layoutNode.Box.X, layoutNode.Box.Y)
 
 	for _, child := range rn.Children {
-		renderChild := buildLayoutTree(child, layoutNode.Box.x, layoutNode.Box.y)
+		renderChild := buildLayoutTree(child, layoutNode.Box.X, layoutNode.Box.Y)
 		layoutNode.Children = append(layoutNode.Children, renderChild)
 	}
 
@@ -31,10 +31,10 @@ func buildLayoutTree(rn *RenderNode, x int, y int) *LayoutNode {
 
 func BuildBox(style map[string]string, currentX int, currentY int) *Box {
 	box := &Box{
-		width:  ExtractNumber(style["width"]),
-		height: ExtractNumber(style["height"]),
-		x:      (currentX + CalculateXY(style, true)),
-		y:      (currentY + CalculateXY(style, false)),
+		Width:  ExtractNumber(style["width"]),
+		Height: ExtractNumber(style["height"]),
+		X:      (currentX + CalculateXY(style, true)),
+		Y:      (currentY + CalculateXY(style, false)),
 	}
 
 	return box
@@ -90,10 +90,10 @@ func PrintLayoutTree(node *LayoutNode) {
 
 	fmt.Println()
 	box := node.Box
-	fmt.Println("   ", "height", box.height)
-	fmt.Println("   ", "width", box.width)
-	fmt.Println("   ", "x", box.x)
-	fmt.Println("   ", "y", box.y)
+	fmt.Println("   ", "height", box.Height)
+	fmt.Println("   ", "width", box.Width)
+	fmt.Println("   ", "x", box.X)
+	fmt.Println("   ", "y", box.Y)
 
 	// Print the node's children.
 	for _, child := range node.Children {

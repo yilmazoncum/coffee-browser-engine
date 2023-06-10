@@ -13,10 +13,10 @@ type RenderNode struct {
 }
 
 type Box struct {
-	x      int
-	y      int
-	width  int
-	height int
+	X      int
+	Y      int
+	Width  int
+	Height int
 }
 
 type LayoutNode struct {
