@@ -33,7 +33,7 @@ func ParseProperties(css string) map[string]string {
 		if css[i] == ';' {
 			tmp = strings.TrimSpace(css[cursor:i])
 			tmpArr := strings.SplitN(tmp, ":", 2)
-			properties[tmpArr[0]] = tmpArr[1]
+			properties[tmpArr[0]] = strings.TrimSpace(tmpArr[1])
 			cursor = i + 1
 		}
 	}

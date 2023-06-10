@@ -42,6 +42,9 @@ func main() {
 	// parsers.PrintStyle(stylesheet)
 
 	renderTree := engine.RenderTree(rootNode, stylesheet)
-	engine.PrintRenderTree(renderTree)
+	//engine.PrintRenderTree(renderTree)
+
+	layoutTree := engine.LayoutTree(renderTree)
+	engine.PrintLayoutTree(layoutTree)
 
 }

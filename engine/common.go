@@ -11,3 +11,18 @@ type RenderNode struct {
 
 	Children []*RenderNode
 }
+
+type Box struct {
+	x      int
+	y      int
+	width  int
+	height int
+}
+
+type LayoutNode struct {
+	Box *Box
+
+	RenderNode *RenderNode
+
+	Children []*LayoutNode
+}
