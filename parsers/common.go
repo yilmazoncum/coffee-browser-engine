@@ -10,6 +10,15 @@ type Node struct {
 	Text string
 }
 
+type Rule struct {
+	Selector   string
+	Properties map[string]string
+}
+
+type Stylesheet struct {
+	Rules []Rule
+}
+
 type Stack []*Node
 
 // IsEmpty: check if stack is empty
