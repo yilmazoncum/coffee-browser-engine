@@ -49,8 +49,8 @@ func Paint(img *image.RGBA, node *engine.LayoutNode) *image.RGBA {
 		//2. Paint Current Node
 		color := ParseColor(node.RenderNode.Style["background-color"])
 
-		for x := node.Box.X; x < node.Box.Width; x++ {
-			for y := node.Box.Y; y < node.Box.Height; y++ {
+		for x := node.Box.X; x < (node.Box.Width + node.Box.X); x++ {
+			for y := node.Box.Y; y < (node.Box.Height + node.Box.Y); y++ {
 				img.Set(x, y, color)
 			}
 		}
@@ -106,7 +106,7 @@ func drawText(img *image.RGBA, node *engine.LayoutNode) {
 	// Draw the text on the image
 	point := fixed.Point26_6{
 		X: fixed.I(node.Box.X) + ((fixed.I(node.Box.Width) / 2) - (font.MeasureString(f, text) / 2)),
-		Y: fixed.I(node.Box.Y) + (fixed.I(node.Box.Height) / 2),
+		Y: fixed.I(node.Box.Y + (node.Box.Height / 2)),
 	}
 	d := &font.Drawer{
 		Dst:  img,
