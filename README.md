@@ -98,6 +98,10 @@ Coffee follow the Webkit like flow
 
 You can run ```go run main.go``` and Coffee render a png image after all of this steps and it show this image on your default browser
 
+image like this:
+![download](https://github.com/yilmazoncum/coffee-browser-engine/assets/55596806/6a782548-c381-49ce-b48d-9ec0c6b5ff96)
+
+
 ## References 
 
 - https://web.dev/howbrowserswork/
